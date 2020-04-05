@@ -1,0 +1,14 @@
+@echo off
+set /p=您好，感谢您的支持，请把需要转换的文件以及此工具放置在同一文件夹中。按回车键开始转换
+for /f "delims=" %%a in ('dir /a-d /b *.jpeg *.PNG *.TGA*.JPG') do ren "%%a" "%%~na.jpg"
+echo;修改扩展名完成
+pause
+@echo off
+setlocal enabledelayedexpansion
+::n为起始数字
+set n=1
+::*.jpg 是文件类型
+for /f "delims=" %%i in ('dir *.jpg /b /a-d') do (
+ren %%i !n!.jpg&&call,set /a n+=1
+)
+pause
